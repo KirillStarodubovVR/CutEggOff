@@ -18,15 +18,61 @@
 ## Использование
 
 ### Установка
-(Добавьте инструкции по установке вашего проекта)
+Структура программы выглядит следующим образом
+```bash
+│   README.md
+│   ruaccent.py
+│   text_split.py
+│
+├───dictionaries
+│       .gitattributes
+│       accents.json
+│       omographs.json
+│
+├───expand_dict
+│   │   all_accents.tsv
+│   │   join_dicts.ipynb
+│   │   join_dicts.py
+│   │   README.md
+│   │
+│   └───data_from_russian_accentuation
+│           wordforms.dat
+│
+├───test_data
+│       test_1_5000.csv
+│       test_2_5000.csv
+│
+└───__pycache__
+        text_split.cpython-311.pyc
+```
+Для корректной работы словари должны быть расположены в папке dictionaries
 
 ### Пример использования
-(Добавьте примеры кода или использования вашего проекта)
 
+Для начала работы с ruaccent необходимо создать объект класс RUAccent
+```
+ru_accent = RUAccent()
+```
+Реализована возможность добавить собственный словарь омографов ```omograph_dictionary``` и ударений ```accent_dictionary```
+```
+ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictionary)
+```
+Всё что дальше требуется это загрузить текст в ```ru_accent.process_all(text=your_text)```
+И программа вернёт 3 списка. Список из предложений текста с расставленными ударениями, список с омографами и список с неизвестными словами.
+```
+text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться с нига из-за этого сучонка"
+processed_text = ru_accent.process_all(text_to_process)
+```
+
+print(processed_text)
 ## Дополнительные возможности
+Можно сделать подсвечивание омографов и неизвестных слов. Добавление в список не только слов, но и контекста.
 
 ### Добавление нового словаря
-(Опишите процесс добавления нового словаря в ваш проект)
+Реализована возможность добавить собственный словарь омографов ```omograph_dictionary``` и ударений ```accent_dictionary```
+```
+ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictionary)
+```
 
 ## Вклад в проект
 
@@ -38,4 +84,4 @@
 
 ## Контакты
 
-(Укажите, как связаться с вами в случае вопросов или предложений)
+Product owner - Екатерина, тел:   email:

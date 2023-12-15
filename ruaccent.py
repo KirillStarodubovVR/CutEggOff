@@ -14,21 +14,21 @@ class RUAccent:
         self.workdir = os.getcwd()
 
 
-    def load(self, custom_dict=None, custom_homographs=None):
+    def load(self, custom_accent=None, custom_omographs=None):
 
-        if custom_homographs is None:
-            custom_homographs = {}
+        if custom_omographs is None:
+            custom_omographs = {}
 
-        if custom_dict is None:
-            custom_dict = {}
+        if custom_accent is None:
+            custom_accent = {}
 
         self.omographs = json.load(open(join_path(self.workdir, "dictionaries", "omographs.json"), encoding='utf-8'))
 
-        self.omographs.update(custom_homographs)
+        self.omographs.update(custom_omographs)
 
         self.accents = json.load(open(join_path(self.workdir, "dictionaries", "accents.json"), encoding='utf-8'))
 
-        self.accents.update(custom_dict)
+        self.accents.update(custom_accent)
 
         # self.yo_words = json.load(open("dictionaries/yo_words.json"), encoding='utf-8')
 
