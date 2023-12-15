@@ -7,10 +7,12 @@ from text_split import split_by_sentences
 
 
 class RUAccent:
+    vowels = "аеёиоуыэюя"
     def __init__(self):
         self.omographs = None
         self.accents = None
         self.workdir = os.getcwd()
+
 
     def load(self, custom_dict=None, custom_homographs=None):
 
@@ -104,7 +106,8 @@ class RUAccent:
         for i, word in enumerate(splitted_text):
             stressed_word = self.accents.get(word, word)
             if stressed_word == word:
-                if len(word) > 4:
+                # if len(word) > 4:
+                if sum(word.count(vowel) for vowel in RUAccent.vowels) > 1:
                     unknown_words.append(word)
                 splitted_text[i] = word
 
@@ -133,7 +136,7 @@ class RUAccent:
 ru_accent = RUAccent()
 ru_accent.load()
 
-text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться из-за этого сучонка"
+text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться с нига из-за этого сучонка"
 processed_text = ru_accent.process_all(text_to_process)
 
 print(processed_text)
