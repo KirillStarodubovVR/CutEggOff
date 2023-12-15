@@ -93,4 +93,4 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 ## Команда
 :stuck_out_tongue_winking_eye:
 - Кирилл, Анна - код анализатора текста
-- Александр, Андрей, Екатерина, Дмитирий - словари
+- Александр, Андрей, Екатерина, Дмитрий - словари
