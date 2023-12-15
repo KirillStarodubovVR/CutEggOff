@@ -62,9 +62,10 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 ```
 text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться с нига из-за этого сучонка"
 processed_text = ru_accent.process_all(text_to_process)
+print(processed_text)
 ```
 
-print(processed_text)
+
 ## Дополнительные возможности
 Можно сделать подсвечивание омографов и неизвестных слов. Добавление в список не только слов, но и контекста.
 
