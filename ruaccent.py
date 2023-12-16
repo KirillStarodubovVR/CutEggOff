@@ -132,11 +132,11 @@ class RUAccent:
         return text
 
 
-# Example usage:
-ru_accent = RUAccent()
-ru_accent.load()
-
-text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться с нига из-за этого сучонка"
-processed_text = ru_accent.process_all(text_to_process)
-
-print(processed_text)
+# # Example usage:
+# ru_accent = RUAccent()
+# ru_accent.load()
+#
+# text_to_process = "В этом замке совершенно нет ни одного замка. Наверно я не буду ругаться с нига из-за этого сучонка"
+# processed_text = ru_accent.process_all(text_to_process)
+#
+# print(processed_text)
