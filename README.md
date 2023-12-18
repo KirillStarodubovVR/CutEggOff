@@ -54,41 +54,34 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 ## Варианты использования
 
 ### Использование в интерпретаторе 
-Структура программы выглядит следующим образом:
+
+Структура программы в репозитории выглядит следующим образом:
+
 ```bash
 │   README.md
-│   ruaccent.py
-│   text_split.py
-│
+│   ruaccent.py - основной файл алгоритма
+│   text_split.py - разбивка на слова
+│   web_interface.py - для запуска UI
+|
+├───templates - оформление веб-интерфейса
+│       index.html
+|       result.html
+|
 ├───dictionaries
 │       .gitattributes
-│       accents.json
-│       omographs.json
-│
-├───expand_dict
-│   │   all_accents.tsv
-│   │   join_dicts.ipynb
-│   │   join_dicts.py
-│   │   README.md
-│   │
-│   └───data_from_russian_accentuation
-│           wordforms.dat
-│
+│       accents.json - словарь словоформ, доступен по ссылке [space](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_norm.json?download=true)
+│       omographs.json - словарь омографов, доступен по ссылке [space](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_omo.json?download=true)
+│   
 ├───test_data
-│       test_1_5000.csv
-│       test_2_5000.csv
-│
-└───__pycache__
-        text_split.cpython-311.pyc
+│       test_1_5000.csv - тестовая выборка на основе НКРЯ
+│       test_2_5000.csv - тестовая выборка на основе НКРЯ
+|       metrics_review.ipynb - блокнот с расчетом метрики
 ```
-Для корректной работы словари должны быть расположены в папке dictionaries
+Для корректной работы словари нужно скачать с указанных ссылок в папку dictionaries.
+
 Для начала работы с ruaccent необходимо создать объект класс RUAccent
 ```
 ru_accent = RUAccent()
-```
-Реализована возможность добавить собственный словарь омографов ```omograph_dictionary``` и ударений ```accent_dictionary```
-```
-ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictionary)
 ```
 Всё что дальше требуется это загрузить текст в ```ru_accent.process_all(text=your_text)```
 И программа вернёт 3 списка. Список из предложений текста с расставленными ударениями, список с омографами и список с неизвестными словами.
