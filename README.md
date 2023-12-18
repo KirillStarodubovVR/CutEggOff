@@ -69,15 +69,15 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 |
 ├───dictionaries
 │       .gitattributes
-│       accents.json - словарь словоформ, доступен по ссылке [space](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_norm.json?download=true)
-│       omographs.json - словарь омографов, доступен по ссылке [space](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_omo.json?download=true)
+│       accents.json - словарь словоформ
+│       omographs.json - словарь омографов
 │   
 ├───test_data
 │       test_1_5000.csv - тестовая выборка на основе НКРЯ
 │       test_2_5000.csv - тестовая выборка на основе НКРЯ
 |       metrics_review.ipynb - блокнот с расчетом метрики
 ```
-Для корректной работы словари нужно скачать с указанных ссылок в папку dictionaries.
+Для корректной работы словари ([словоформы](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_norm.json?download=true),[омографы](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_omo.json?download=true)) нужно скачать с указанных ссылок в папку dictionaries.
 
 Для начала работы с ruaccent необходимо создать объект класс RUAccent
 ```
