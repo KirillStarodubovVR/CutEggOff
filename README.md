@@ -83,6 +83,7 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 Для начала работы с ruaccent необходимо создать объект класс RUAccent
 ```
 ru_accent = RUAccent()
+ru_accent.load()
 ```
 Всё что дальше требуется это загрузить текст в ```ru_accent.process_all(text=your_text)```
 И программа вернёт 3 списка. Список из предложений текста с расставленными ударениями, список с омографами и список с неизвестными словами.
