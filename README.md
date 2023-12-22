@@ -69,10 +69,8 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 │   README.md
 │   ruaccent.py - основной файл алгоритма
 │   text_split.py - разбивка на слова
-|
-├───web_interface - оформление веб-интерфейса
-│       web_interface.py - для запуска UI c flask
-│       pc_app.py - для запуска UI c customtkinter
+|   web_interface.py - для запуска UI c flask
+|   pc_app.py - для запуска UI c customtkinter
 |
 ├───templates - оформление веб-интерфейса
 │       index.html
@@ -132,6 +130,7 @@ print(processed_text)
 > [!WARNING]
 > В основе чат-бота не финальный алгоритм! Чат-бот запущен на платном сервисе и после окончания хакатона будет отключен!
 
+### Развертывание на базе Tkinter
 ## Дальнейшее развитие проекта
 - Можно сделать подсвечивание омографов и неизвестных слов. Добавление в список не только слов, но и контекста.
 - Добавить синтез речи и работу со словами с латинискими буквами.
