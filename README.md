@@ -65,7 +65,10 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 │   README.md
 │   ruaccent.py - основной файл алгоритма
 │   text_split.py - разбивка на слова
-│   web_interface.py - для запуска UI
+|
+├───web_interface - оформление веб-интерфейса
+│       web_interface.py - для запуска UI c flask
+│       pc_app.py - для запуска UI c customtkinter
 |
 ├───templates - оформление веб-интерфейса
 │       index.html
@@ -83,7 +86,10 @@ ru_accent.load(custom_accent=accent_dictionary, custom_omographs=omograph_dictio
 ```
 Для корректной работы словари ([словоформы](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_norm.json?download=true),[омографы](https://huggingface.co/spaces/Shakhovak/RU_accent_flask/resolve/main/dictionaries/file_omo.json?download=true)) нужно скачать с указанных ссылок в папку dictionaries.
 
-Для начала работы с ruaccent необходимо создать объект класс RUAccent
+Для начала работы нужно:
+- клонировать репозиторий
+- скачать словари и добавить их в папку ```dictionaries```
+- создать объект класс RUAccent и загрузить в него словари 
 ```
 ru_accent = RUAccent()
 ru_accent.load()

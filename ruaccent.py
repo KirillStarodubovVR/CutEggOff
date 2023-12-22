@@ -15,22 +15,39 @@ class RUAccent:
         self.workdir = os.getcwd()
 
     def load(self, custom_accent=None, custom_omographs=None):
-
         if custom_omographs is None:
             custom_omographs = {}
 
         if custom_accent is None:
             custom_accent = {}
 
-        self.omographs = json.load(open(join_path(self.workdir, "dictionaries", "file_omo.json"), encoding='utf-8'))
+        self.omographs = json.load(
+            open(
+                join_path(self.workdir, "dictionaries", "file_omo.json"),
+                encoding="utf-8",
+            )
+        )
+        custom_omographs = {
+            key: value
+            for key, value in custom_omographs.items()
+            if key not in self.omographs
+        }
 
         self.omographs.update(custom_omographs)
 
-        self.accents = json.load(open(join_path(self.workdir, "dictionaries", "file_norm.json"), encoding='utf-8'))
+        self.accents = json.load(
+            open(
+                join_path(self.workdir, "dictionaries", "file_norm.json"),
+                encoding="utf-8",
+            )
+        )
+        custom_accent = {
+            key: value
+            for key, value in custom_accent.items()
+            if key not in self.accents
+        }
 
         self.accents.update(custom_accent)
-
-        # self.yo_words = json.load(open("dictionaries/yo_words.json"), encoding='utf-8')
 
     def split_by_words(self, string):
         result = re.findall(r"\w*(?:\+\w+)*|[^\w\s]+", string.lower())
@@ -59,7 +76,9 @@ class RUAccent:
             founded_omographs = self._process_omographs(text)
             omographs_list.extend(founded_omographs)
 
-            processed_text, unknown_words = self._process_accent(text, founded_omographs)
+            processed_text, unknown_words = self._process_accent(
+                text, founded_omographs
+            )
             unknown_list.extend(unknown_words)
 
             processed_text = " ".join(processed_text)
@@ -67,7 +86,9 @@ class RUAccent:
 
             accented_sentence.append(processed_text)
 
-        omographs_list = [f"{key}: {value}" for elem in omographs_list for key, value in elem.items()]
+        omographs_list = [
+            f"{key}: {value}" for elem in omographs_list for key, value in elem.items()
+        ]
         return accented_sentence, list(set(omographs_list)), list(set(unknown_list))
 
     def _process_yo(self, text):
@@ -84,9 +105,7 @@ class RUAccent:
         for i, word in enumerate(splitted_text):
             variants = self.omographs.get(word)
             if variants:
-                founded_omographs.append(
-                    {word: self.omographs[word]["acc_variants"]}
-                )
+                founded_omographs.append({word: self.omographs[word]["acc_variants"]})
 
         return founded_omographs
 
@@ -114,6 +133,7 @@ class RUAccent:
         for char in punc:
             text = text.replace(" " + char, char)
         return text
+
 
 # # Example usage:
 # ru_accent = RUAccent()
